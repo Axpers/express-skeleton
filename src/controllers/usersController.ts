@@ -23,13 +23,12 @@ export class UsersController {
       .delete("/:id", (req, res) => {
         this.usersService.deleteUser(Number(req.params.id));
         res.send(null);
+      })
+      .post("/", (req, res) => {
+        const user = req.body;
+        this.usersService.addUser(user);
+        res.send(user);
       });
-    // .post("/", async (ctx) => {
-    //   const { value } = ctx.request.body({ type: "json" });
-    //   const user = await value;
-    //   this.usersService.addUser(user);
-    //   ctx.response.body = user;
-    // });
   }
 
   getRouter() {

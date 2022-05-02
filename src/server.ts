@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 
 const mainRouter = new MainRouter();
 
+app.use(express.json());
 app.use("/", mainRouter.getRouter());
 
 app.listen(port, () => {
