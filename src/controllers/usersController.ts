@@ -9,6 +9,7 @@ export class UsersController {
   constructor() {
     this.usersService = new UsersService();
     this.router = express.Router();
+    this.initMiddlewares();
     this.initRoutes();
   }
 
@@ -29,6 +30,15 @@ export class UsersController {
         this.usersService.addUser(user);
         res.send(user);
       });
+  }
+
+  private initMiddlewares() {
+    const logger = (req, res, next) => {
+      console.log("Test middleware");
+      next();
+    };
+
+    this.router.use(logger);
   }
 
   getRouter() {
