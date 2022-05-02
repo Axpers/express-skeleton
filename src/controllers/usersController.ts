@@ -19,11 +19,11 @@ export class UsersController {
       })
       .get("/:id", (req, res) => {
         res.send(this.usersService.getUser(Number(req.params.id)));
+      })
+      .delete("/:id", (req, res) => {
+        this.usersService.deleteUser(Number(req.params.id));
+        res.send(null);
       });
-    // .delete("/:id", (ctx) => {
-    //   this.usersService.deleteUser(Number(ctx.params.id));
-    //   ctx.response.body = null;
-    // })
     // .post("/", async (ctx) => {
     //   const { value } = ctx.request.body({ type: "json" });
     //   const user = await value;
