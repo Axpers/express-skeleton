@@ -13,12 +13,13 @@ export class UsersController {
   }
 
   private initRoutes() {
-    this.router.get("/", (req, res) => {
-      res.send(this.usersService.getUsers());
-    });
-    // .get("/:id", (ctx) => {
-    //   ctx.response.body = this.usersService.getUser(Number(ctx.params.id));
-    // })
+    this.router
+      .get("/", (req, res) => {
+        res.send(this.usersService.getUsers());
+      })
+      .get("/:id", (req, res) => {
+        res.send(this.usersService.getUser(Number(req.params.id)));
+      });
     // .delete("/:id", (ctx) => {
     //   this.usersService.deleteUser(Number(ctx.params.id));
     //   ctx.response.body = null;
